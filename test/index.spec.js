@@ -32,9 +32,10 @@ describe('fs_intermediate', () => {
     });
 
 
-    it('Should have return the listing data for a file', done => {
+    it.only('Should have return the listing data for a file', done => {
         app(ROOT + '/tmp/file.txt')
             .then(result => {
+                console.log(result);
                 Array.isArray(result).should.eql(true);
                 result.length.should.eql(1);
                 result[0].fileName.should.eql('file.txt');

@@ -7,6 +7,17 @@ const main = (dir) => {
                 reject({message: 'Invalid Path'})
             }
             else {
+                const result = fs.readdirSync(dir).forEach(filename => {
+                    return {
+                        fileName: path.parse(filename).name,
+                        ext: path.parse(filename).ext,
+                        filepath: path.resolve(dir, filename),
+                        stat: fs.statSync(filepath),
+                        isFile: stat.isFile(),
+                        size: stat.size()
+                    }
+                })
+                resolve(result)
             }
         })
     })
